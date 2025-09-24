@@ -1,0 +1,26 @@
+\documentclass[11pt]{article}
+\input{preamble}
+\LoadLabFromCSV
+
+\begin{document}
+
+{\LARGE \textbf{Lab: \LabTitle}}\par
+\hrule\vspace{6pt}
+{\normalsize \CourseCode{} · \CourseTitle{} · \Unit{}}\\
+{\normalsize \Semester{} \ \Year{} · \School{} · Instructor: \Instructor{} · \Modality{}}
+
+\input{\IntroPath}
+\input{\BackgroundPath}
+\input{core/20-safety}
+\input{\MaterialsPath}
+\input{\ProcedurePath}
+
+\newpage
+% paper student worksheet
+\def\IncludePaperInstructions{\input{\PaperInstrPath}}
+\input{core/50-student-form-paper}
+
+\newpage
+\input{core/90-references}
+
+\end{document}

@@ -1,0 +1,54 @@
+\usepackage[a4paper,margin=0.75in]{geometry}
+\usepackage{parskip,microtype,enumitem,graphicx,float}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=false,pdfborder={0 0 0}}
+\usepackage{titlesec}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[sfdefault]{carlito}
+\else
+  \usepackage{fontspec}
+  \setmainfont{Georgia}
+\fi
+\usepackage{csvsimple,etoolbox,fancyhdr,lastpage}
+
+% ---------------------------
+% Lab selector
+% ---------------------------
+\newcommand{\SelectedLabID}{unit2_two-point} % change this to pick lab
+\newcommand{\LabLookupLoaded}{0}
+
+\newcommand{\LoadLabFromCSV}{%
+  \csvreader[
+    head to column names,
+    late after line={%
+      \ifstrequal{\id}{\SelectedLabID}{%
+        \xdef\LabTitle{\lab_title}%
+        \xdef\Unit{\unit}%
+        \xdef\CourseCode{\course_code}%
+        \xdef\CourseTitle{\course_title}%
+        \xdef\Modality{\modality}%
+        \xdef\Semester{\semester}%
+        \xdef\Year{\year}%
+        \xdef\School{\school}%
+        \xdef\Instructor{\instr}%
+        \xdef\IntroPath{\intro}%
+        \xdef\BackgroundPath{\background}%
+        \xdef\MaterialsPath{\materials}%
+        \xdef\ProcedurePath{\procedure}%
+        \xdef\FormInstrPath{\instructions_form}%
+        \xdef\PaperInstrPath{\instructions_paper}%
+        \xdef\FigureFolder{\fig_folder}%
+        \gdef\LabLookupLoaded{1}%
+      }{}%
+    }
+  ]{data/labs.csv}{}{}%
+}
+
+% Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\footnotesize \School{} · \CourseCode{} · \Semester{} \Year{} — Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}

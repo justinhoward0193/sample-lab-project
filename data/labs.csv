@@ -1,0 +1,2 @@
+id,unit,lab_title,course_code,course_title,modality,semester,year,school,instr,intro,background,materials,procedure,instructions_form,instructions_paper,fig_folder
+unit2_two-point,Unit 2 Lab,Two-Point Discrimination,BIO 137,Human Anatomy and Physiology I,(In Person),Fall,2025,KCTCS Somerset,Justin N. Howard,labs/unit2_two-point/05-introduction.tex,labs/unit2_two-point/10-background.tex,core/30-materials.tex,core/40-procedure.tex,labs/unit2_two-point/instructions-form.tex,labs/unit2_two-point/instructions-paper.tex,labs/unit2_two-point/figures/
