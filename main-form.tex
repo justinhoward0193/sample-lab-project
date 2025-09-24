@@ -1,9 +1,24 @@
-@article{greenwade93,
-    author  = "George D. Greenwade",
-    title   = "The {C}omprehensive {T}ex {A}rchive {N}etwork ({CTAN})",
-    year    = "1993",
-    journal = "TUGBoat",
-    volume  = "14",
-    number  = "3",
-    pages   = "342--351"
-}
+\documentclass[11pt]{article}
+\input{preamble}
+
+\begin{document}
+
+\LabInput{meta.tex}
+\MakeTitleBlock
+
+% Content
+\LabInput{05-introduction.tex}
+\LabInput{10-background.tex}
+\input{core/20-safety}
+\input{core/30-materials}
+\input{core/40-procedure}
+
+% Student worksheet (fillable form)
+\newpage
+\input{core/50-student-form-form}
+
+% References
+\newpage
+\input{core/90-references}
+
+\end{document}

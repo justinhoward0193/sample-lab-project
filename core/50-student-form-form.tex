@@ -1,0 +1,42 @@
+\begin{Form}
+
+\section*{Student Worksheet — \LabTitle}
+{\small \CourseCode{} · Instructor: \Instructor}\par\medskip
+
+\noindent\textbf{Name:} \TextField[name=studentName,width=8cm]{} \hfill
+\textbf{Date:} \TextField[name=theDate,width=4cm]{}
+
+\vspace{0.5cm}
+% Lab-specific submission instructions (fillable)
+\LabInput{instructions-form.tex}
+
+\vspace{0.8cm}
+\section{Data Tables}
+\renewcommand{\arraystretch}{1.6}
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Region} & \textbf{Trial 1 (mm)} & \textbf{Trial 2 (mm)} & \textbf{Trial 3 (mm)} & \textbf{Threshold (mm)} \\
+\hline
+Fingertip       & \TextField[name=ft1,width=2.5cm]{} & \TextField[name=ft2,width=2.5cm]{} & \TextField[name=ft3,width=2.5cm]{} & \TextField[name=ftT,width=2.5cm]{} \\ \hline
+Palm            & \TextField[name=pa1,width=2.5cm]{} & \TextField[name=pa2,width=2.5cm]{} & \TextField[name=pa3,width=2.5cm]{} & \TextField[name=paT,width=2.5cm]{} \\ \hline
+Forearm (volar) & \TextField[name=fo1,width=2.5cm]{} & \TextField[name=fo2,width=2.5cm]{} & \TextField[name=fo3,width=2.5cm]{} & \TextField[name=foT,width=2.5cm]{} \\ \hline
+Upper arm       & \TextField[name=ua1,width=2.5cm]{} & \TextField[name=ua2,width=2.5cm]{} & \TextField[name=ua3,width=2.5cm]{} & \TextField[name=uaT,width=2.5cm]{} \\ \hline
+Back            & \TextField[name=ba1,width=2.5cm]{} & \TextField[name=ba2,width=2.5cm]{} & \TextField[name=ba3,width=2.5cm]{} & \TextField[name=baT,width=2.5cm]{} \\ \hline
+Calf            & \TextField[name=ca1,width=2.5cm]{} & \TextField[name=ca2,width=2.5cm]{} & \TextField[name=ca3,width=2.5cm]{} & \TextField[name=caT,width=2.5cm]{} \\ \hline
+\end{tabular}
+\end{center}
+
+\section{Analysis \& Questions}
+\begin{enumerate}[leftmargin=*]
+  \item Which region had the smallest (best) threshold? Which had the largest (worst)? Explain using receptor density.\\[0.5em]
+  \TextField[multiline=true,name=q1,width=\textwidth,height=3cm]{}
+
+  \item How could calluses, prior injury, or pressure variability affect thresholds?\\[0.5em]
+  \TextField[multiline=true,name=q2,width=\textwidth,height=3cm]{}
+
+  \item Compare your data to your partner’s. What biological or methodological factors explain differences?\\[0.5em]
+  \TextField[multiline=true,name=q3,width=\textwidth,height=3cm]{}
+\end{enumerate}
+
+\end{Form}
