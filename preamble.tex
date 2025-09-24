@@ -1,8 +1,9 @@
+% ===== Shared settings =====
 \usepackage[a4paper,margin=0.75in]{geometry}
 \usepackage{parskip,microtype,enumitem,graphicx,float}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{hyperref}
-\hypersetup{colorlinks=false,pdfborder={0 0 0}}
+\hypersetup{colorlinks=false,pdfborder={0 0 0}} % no colored boxes
 \usepackage{titlesec}
 \usepackage{iftex}
 \ifPDFTeX
@@ -11,44 +12,39 @@
   \usepackage{fontspec}
   \setmainfont{Georgia}
 \fi
-\usepackage{csvsimple,etoolbox,fancyhdr,lastpage}
+\usepackage{fancyhdr,lastpage}
 
-% ---------------------------
-% Lab selector
-% ---------------------------
-\newcommand{\SelectedLabID}{unit2_two-point} % change this to pick lab
-\newcommand{\LabLookupLoaded}{0}
+% Headings
+\definecolor{DeepBlue}{RGB}{0,40,90}
+\titleformat{\section}{\Large\bfseries\color{DeepBlue}\raggedright}{}{0pt}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{DeepBlue}\raggedright}{}{0pt}{}
 
-\newcommand{\LoadLabFromCSV}{%
-  \csvreader[
-    head to column names,
-    late after line={%
-      \ifstrequal{\id}{\SelectedLabID}{%
-        \xdef\LabTitle{\lab_title}%
-        \xdef\Unit{\unit}%
-        \xdef\CourseCode{\course_code}%
-        \xdef\CourseTitle{\course_title}%
-        \xdef\Modality{\modality}%
-        \xdef\Semester{\semester}%
-        \xdef\Year{\year}%
-        \xdef\School{\school}%
-        \xdef\Instructor{\instr}%
-        \xdef\IntroPath{\intro}%
-        \xdef\BackgroundPath{\background}%
-        \xdef\MaterialsPath{\materials}%
-        \xdef\ProcedurePath{\procedure}%
-        \xdef\FormInstrPath{\instructions_form}%
-        \xdef\PaperInstrPath{\instructions_paper}%
-        \xdef\FigureFolder{\fig_folder}%
-        \gdef\LabLookupLoaded{1}%
-      }{}%
-    }
-  ]{data/labs.csv}{}{}%
+% Metadata defaults (overridden in labs/.../meta.tex)
+\newcommand{\School}{KCTCS Somerset}
+\newcommand{\CourseCode}{}
+\newcommand{\CourseTitle}{}
+\newcommand{\Modality}{}
+\newcommand{\Instructor}{Justin N. Howard}
+\newcommand{\LabTitle}{}
+\newcommand{\Unit}{}
+\newcommand{\Semester}{}
+\newcommand{\Year}{}
+
+% Title block
+\newcommand{\MakeTitleBlock}{%
+  {\LARGE \textbf{\LabTitle}}\par\vspace{6pt}
+  \hrule\vspace{6pt}
+  {\normalsize \CourseCode{} · \CourseTitle{} · \Unit{}}\\
+  {\normalsize \Semester{} \ \Year{} · \School{} · Instructor: \Instructor{} · \Modality{}}
 }
 
 % Footer
 \pagestyle{fancy}
 \fancyhf{}
-\fancyfoot[C]{\footnotesize \School{} · \CourseCode{} · \Semester{} \Year{} — Page \thepage\ of \pageref{LastPage}}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\footnotesize \School{} · \CourseCode{} · \Semester{} \Year{} — Page \thepage\ of \pageref{LastPage}}
+
+% Helper to include from current lab folder
+\newcommand{\LabPath}{labs/unit2_two-point/} % <— change this to switch labs
+\newcommand{\LabInput}[1]{\input{\LabPath#1}}
